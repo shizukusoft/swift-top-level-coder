@@ -8,7 +8,7 @@
 #if canImport(Combine)
 import Combine
 
-#if swift(>=5.5)
+#if swift(>=5.7)
 public protocol TopLevelDecoder<Input>: Combine.TopLevelDecoder {
     /// The type this decoder accepts.
     associatedtype Input
@@ -28,7 +28,7 @@ public protocol TopLevelDecoder: Combine.TopLevelDecoder {
 
 #else
 
-#if swift(>=5.5)
+#if swift(>=5.7)
 public protocol TopLevelDecoder<Input> {
     /// The type this decoder accepts.
     associatedtype Input
