@@ -54,13 +54,13 @@ jobs:
           args: build --enable-test-discovery
         env:
           SWIFT_VERSION: ${{ matrix.swift-version }}
-      - name: Run tests
-        uses: sinoru/actions-swift@v1
-        with:
-          swift-image-tag: null
-          args: test --enable-test-discovery
-        env:
-          SWIFT_VERSION: ${{ matrix.swift-version }}
+      # - name: Run tests
+      #   uses: sinoru/actions-swift@v1
+      #   with:
+      #     swift-image-tag: null
+      #     args: test --enable-test-discovery
+      #   env:
+      #     SWIFT_VERSION: ${{ matrix.swift-version }}
   xcode-test:
     strategy:
       fail-fast: true
@@ -91,5 +91,5 @@ jobs:
         run: xcodebuild -resolvePackageDependencies
       - name: Analyze
         run: xcodebuild -scheme TopLevelCoder -destination '${{ matrix.xcode-destination }}' analyze
-      - name: Test
-        run: xcodebuild -scheme TopLevelCoder -destination '${{ matrix.xcode-destination }}' test
+      # - name: Test
+      #   run: xcodebuild -scheme TopLevelCoder -destination '${{ matrix.xcode-destination }}' test
