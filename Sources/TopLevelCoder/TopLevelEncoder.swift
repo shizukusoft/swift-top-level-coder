@@ -8,7 +8,7 @@
 #if canImport(Combine)
 import Combine
 
-#if swift(>=5.7)
+#if swift(>=5.7) && compiler(>=5.7)
 public protocol TopLevelEncoder<Output>: Combine.TopLevelEncoder {
     /// The type this encoder produces.
     associatedtype Output
@@ -32,7 +32,7 @@ public protocol TopLevelEncoder: Combine.TopLevelEncoder {
 
 #else
 
-#if swift(>=5.7)
+#if swift(>=5.7) && compiler(>=5.7)
 public protocol TopLevelEncoder<Output> {
     /// The type this encoder produces.
     associatedtype Output
