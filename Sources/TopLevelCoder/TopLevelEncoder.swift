@@ -5,10 +5,11 @@
 //  Created by Jaehong Kang on 2022/12/13.
 //
 
+#if swift(>=5.7)
+
 #if canImport(Combine)
 import Combine
 
-#if swift(>=5.7) && compiler(>=5.7)
 public protocol TopLevelEncoder<Output>: Combine.TopLevelEncoder {
     /// The type this encoder produces.
     associatedtype Output
@@ -19,7 +20,7 @@ public protocol TopLevelEncoder<Output>: Combine.TopLevelEncoder {
     func encode<T>(_ value: T) throws -> Self.Output where T: Encodable
 }
 #else
-public protocol TopLevelEncoder: Combine.TopLevelEncoder {
+public protocol TopLevelEncoder<Output> {
     /// The type this encoder produces.
     associatedtype Output
 
@@ -32,8 +33,10 @@ public protocol TopLevelEncoder: Combine.TopLevelEncoder {
 
 #else
 
-#if swift(>=5.7) && compiler(>=5.7)
-public protocol TopLevelEncoder<Output> {
+#if canImport(Combine)
+import Combine
+
+public protocol TopLevelEncoder: Combine.TopLevelEncoder {
     /// The type this encoder produces.
     associatedtype Output
 

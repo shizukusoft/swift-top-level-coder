@@ -5,10 +5,11 @@
 //  Created by Jaehong Kang on 2022/12/13.
 //
 
+#if swift(>=5.7)
+
 #if canImport(Combine)
 import Combine
 
-#if swift(>=5.7) && compiler(>=5.7)
 public protocol TopLevelDecoder<Input>: Combine.TopLevelDecoder {
     /// The type this decoder accepts.
     associatedtype Input
@@ -17,7 +18,7 @@ public protocol TopLevelDecoder<Input>: Combine.TopLevelDecoder {
     func decode<T>(_ type: T.Type, from: Self.Input) throws -> T where T: Decodable
 }
 #else
-public protocol TopLevelDecoder: Combine.TopLevelDecoder {
+public protocol TopLevelDecoder<Input> {
     /// The type this decoder accepts.
     associatedtype Input
 
@@ -28,8 +29,10 @@ public protocol TopLevelDecoder: Combine.TopLevelDecoder {
 
 #else
 
-#if swift(>=5.7) && compiler(>=5.7)
-public protocol TopLevelDecoder<Input> {
+#if canImport(Combine)
+import Combine
+
+public protocol TopLevelDecoder: Combine.TopLevelDecoder {
     /// The type this decoder accepts.
     associatedtype Input
 
