@@ -5,11 +5,13 @@
 //  Created by Jaehong Kang on 2022/12/13.
 //
 
+#if canImport(Combine)
+import Combine
+#endif
+
 #if swift(>=5.7)
 
 #if canImport(Combine)
-import Combine
-
 public protocol TopLevelDecoder<Input>: Combine.TopLevelDecoder {
     /// The type this decoder accepts.
     associatedtype Input
@@ -30,8 +32,6 @@ public protocol TopLevelDecoder<Input> {
 #else
 
 #if canImport(Combine)
-import Combine
-
 public protocol TopLevelDecoder: Combine.TopLevelDecoder {
     /// The type this decoder accepts.
     associatedtype Input

@@ -5,11 +5,13 @@
 //  Created by Jaehong Kang on 2022/12/13.
 //
 
+#if canImport(Combine)
+import Combine
+#endif
+
 #if swift(>=5.7)
 
 #if canImport(Combine)
-import Combine
-
 public protocol TopLevelEncoder<Output>: Combine.TopLevelEncoder {
     /// The type this encoder produces.
     associatedtype Output
@@ -34,8 +36,6 @@ public protocol TopLevelEncoder<Output> {
 #else
 
 #if canImport(Combine)
-import Combine
-
 public protocol TopLevelEncoder: Combine.TopLevelEncoder {
     /// The type this encoder produces.
     associatedtype Output
