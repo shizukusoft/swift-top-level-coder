@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import TopLevelCoder
+import TopLevelCoders
 
 extension PropertyListDecoder: TopLevelDecoder {
 }
